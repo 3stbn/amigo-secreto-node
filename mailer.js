@@ -41,7 +41,7 @@ function sendMail(participant, partner) {
     from: configMail.user , // sender address
     to: participant.mail, // receiver
     subject: 'Sorteo Amigo Secreto', // Subject line
-    html: `<p> Hola ${participant.nombre} tu pareja es ${partner.nombre}</p>`// plain text body
+    html: `<p> Hola ${participant.name} tu pareja es ${partner.name}</p>`// plain text body
   };
   transporter.sendMail(mailOptions, function (err, info) {
     if(err)
