@@ -1,13 +1,5 @@
 const nodemailer = require('nodemailer');
-const configMail = require('./config')
-
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-         user: configMail.user,
-         pass: configMail.pass
-     }
- });
+const configMail = require('./config');
 
 const participants = [
   //Fill it with your participants
@@ -15,7 +7,7 @@ const participants = [
   {name: '', mail: ''},
   {name: '', mail: ''}
 ]
-const taken = []
+let taken = []
 
 for ( let i = 0; i < participants.length; i++) {
   const participant = participants[i];
@@ -36,6 +28,13 @@ function  matchParticipants(participant, randomParticipant) {
   }
   return  matchParticipants(participant, randomFriend())
 }
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+         user: configMail.user,
+         pass: configMail.pass
+     }
+ });
 function sendMail(participant, partner) {
   mailOptions = {
     from: configMail.user , // sender address
